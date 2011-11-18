@@ -37,7 +37,7 @@
                     <assembleDirectory>target</assembleDirectory> 
                     <programs>
                         <program>
-                            <mainClass>com.force.sample.Main</mainClass>
+                            <mainClass>com.heroku.devcenter.Main</mainClass>
                             <name>memcache</name>
                         </program>             
                     </programs>
