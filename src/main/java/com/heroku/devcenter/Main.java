@@ -21,7 +21,7 @@ public class Main {
 	 */
 	public static void main(String[] args) throws IOException, URISyntaxException {
 		AuthDescriptor ad = new AuthDescriptor(new String[]{"PLAIN"},
-                new PlainCallbackHandler("app1805387@heroku.com", "k/aoMGr9EcKo4Sa6"));
+                new PlainCallbackHandler(System.getenv("MEMCACHE_USERNAME"), System.getenv("MEMCACHE_PASSWORD")));
 		ConnectionFactoryBuilder factoryBuilder = new ConnectionFactoryBuilder();
 		ConnectionFactory cf = factoryBuilder.setProtocol(Protocol.BINARY).setAuthDescriptor(ad).build();
 		
@@ -30,7 +30,7 @@ public class Main {
 //        baseURIs.add(base);
 //        MemcachedClient memcachedClient = new MemcachedClient(baseURIs, "default", System.getenv("MEMCACHE_USERNAME"), System.getenv("MEMCACHE_PASSWORD"));
 		
-		MemcachedClient memcachedClient = new MemcachedClient(cf, Collections.singletonList(new InetSocketAddress("mc7.ec2.northscale.net", 11211)));
+		MemcachedClient memcachedClient = new MemcachedClient(cf, Collections.singletonList(new InetSocketAddress(System.getenv("MEMCACHE_SERVERS"), 11211)));
 		memcachedClient.add("test", 0, "testData");
 		System.out.println(memcachedClient.get("test"));
 	}
