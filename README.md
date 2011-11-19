@@ -85,4 +85,4 @@ Client Creation:
     ConnectionFactory cf = factoryBuilder.setProtocol(Protocol.BINARY).setAuthDescriptor(ad).build();
     MemcachedClient memcachedClient = new MemcachedClient(cf, Collections.singletonList(new InetSocketAddress(config.getServers(), 11211)));
 
-You can also download the [sample code](http://github.com/heroku/devcenter-memcache-java.git)
+You can also download the [sample code](http://github.com/heroku/devcenter-memcache-java)
