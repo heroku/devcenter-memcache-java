@@ -22,35 +22,23 @@
         <artifactId>spymemcached</artifactId>
         <version>2.7.3</version>
     </dependency>
+    
+   	<!-- Only necessary if using Spring -->
+    <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-core</artifactId>
+       <version>3.0.6.RELEASE</version>
+   	</dependency>
+    <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-context</artifactId>
+       <version>3.0.6.RELEASE</version>
+   	</dependency>
+    <dependency>
+    	<groupId>cglib</groupId>
+    	<artifactId>cglib</artifactId>
+    	<version>2.2.2</version>
+    </dependency>
   </dependencies>
-  
-  
-  <build>
-  	<plugins>
-            <!-- The maven app assembler plugin will generate a script that sets up the classpath and runs your project -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>appassembler-maven-plugin</artifactId>
-                <version>1.1.1</version>
-                <configuration>
-                    <assembleDirectory>target</assembleDirectory> 
-                    <programs>
-                        <program>
-                            <mainClass>com.heroku.devcenter.Main</mainClass>
-                            <name>memcache</name>
-                        </program>             
-                    </programs>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>assemble</goal>
-                        </goals>
-                    </execution>				
-                </executions>
-            </plugin>  	
-  	</plugins>
-  </build>
 
 </project>

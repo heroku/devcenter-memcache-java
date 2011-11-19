@@ -1,4 +1,4 @@
-package com.heroku.devcenter;
+package com.heroku.devcenter.spring;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -12,6 +12,10 @@ import net.spy.memcached.MemcachedClient;
 import net.spy.memcached.auth.AuthDescriptor;
 import net.spy.memcached.auth.PlainCallbackHandler;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
 public class Main {
 
 	/**
@@ -20,14 +24,18 @@ public class Main {
 	 * @throws URISyntaxException 
 	 */
 	public static void main(String[] args) throws IOException, URISyntaxException {
+		//ApplicationContext ctx = new GenericXmlApplicationContext("applicationContext.xml");
+		ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
+		MemcacheConfig config = ctx.getBean(MemcacheConfig.class);
+		
 		AuthDescriptor ad = new AuthDescriptor(new String[]{"PLAIN"},
-                new PlainCallbackHandler(System.getenv("MEMCACHE_USERNAME"), System.getenv("MEMCACHE_PASSWORD")));
+                new PlainCallbackHandler(config.getUsername(), config.getPassword()));
 		ConnectionFactoryBuilder factoryBuilder = new ConnectionFactoryBuilder();
 		ConnectionFactory cf = factoryBuilder.setProtocol(Protocol.BINARY).setAuthDescriptor(ad).build();
 		
-		MemcachedClient memcachedClient = new MemcachedClient(cf, Collections.singletonList(new InetSocketAddress(System.getenv("MEMCACHE_SERVERS"), 11211)));
-		memcachedClient.add("test", 0, "testData");
-		System.out.println(memcachedClient.get("test"));
+		MemcachedClient memcachedClient = new MemcachedClient(cf, Collections.singletonList(new InetSocketAddress(config.getServers(), 11211)));
+		memcachedClient.add("testSpring", 0, "testDataSpring");
+		System.out.println(memcachedClient.get("testSpring"));
 	}
 
 }
