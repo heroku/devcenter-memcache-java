@@ -1,4 +1,4 @@
-## Using MongoDB from Java
+## Using Memcache from Java
 
 This is an example of using Spymemcached to connect to the Membase Memcache service from both a generic Java application and a Spring configured application on Heroku. Read more about how to use Membache in the [add-on article](http://devcenter.heroku.com/articles/memcache).
 
