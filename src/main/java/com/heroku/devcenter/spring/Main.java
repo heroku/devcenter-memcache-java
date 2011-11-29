@@ -26,14 +26,8 @@ public class Main {
 	public static void main(String[] args) throws IOException, URISyntaxException {
 		//ApplicationContext ctx = new GenericXmlApplicationContext("applicationContext.xml");
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
-		MemcacheConfig config = ctx.getBean(MemcacheConfig.class);
+		MemcachedClient memcachedClient = ctx.getBean(MemcachedClient.class);
 		
-		AuthDescriptor ad = new AuthDescriptor(new String[]{"PLAIN"},
-                new PlainCallbackHandler(config.getUsername(), config.getPassword()));
-		ConnectionFactoryBuilder factoryBuilder = new ConnectionFactoryBuilder();
-		ConnectionFactory cf = factoryBuilder.setProtocol(Protocol.BINARY).setAuthDescriptor(ad).build();
-		
-		MemcachedClient memcachedClient = new MemcachedClient(cf, Collections.singletonList(new InetSocketAddress(config.getServers(), 11211)));
 		memcachedClient.add("testSpring", 0, "testDataSpring");
 		System.out.println(memcachedClient.get("testSpring"));
 	}
