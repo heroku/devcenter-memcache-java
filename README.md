@@ -1,6 +1,6 @@
 ## Using Memcache from Java
 
-This is an example of using Spymemcached to connect to the Membase Memcache service from both a generic Java application and a Spring configured application on Heroku. Read more about how to use Membache in the [add-on article](http://devcenter.heroku.com/articles/memcache).
+This is an example of using Spymemcached to connect to the Couchbase Memcache service from both a generic Java application and a Spring configured application on Heroku. Read more about how to use Memcache in the [add-on article](http://devcenter.heroku.com/articles/memcache).
 
 # Using The Sample Code
 
@@ -8,7 +8,7 @@ Clone the repo with:
 
     $ git clone https://github.com/heroku/devcenter-memcache-java.git
 
-Start Memcached locally and set environment variables the way that the Heroku add-on by Membase does:
+Start Memcached locally and set environment variables the way that the Heroku add-on by Couchbase does:
 
     $ export MEMCACHE_SERVERS=localhost
     $ export MEMCACHE_USERNAME=user
