@@ -73,7 +73,7 @@ Assuming you already have a [Heroku account](http://heroku.com/signup) and have 
     http://quiet-waterfall-6274.herokuapp.com/ | git@heroku.com:quiet-waterfall-6274.git
     Git remote heroku added
 
-## Add Mongo HQ Service
+## Add Memcache Add-on
 
     $ heroku addons:add memcache:5mb
     -----> Adding memcache:5mb to quiet-waterfall-6274... done, v1 (free)
