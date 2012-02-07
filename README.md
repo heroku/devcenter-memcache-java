@@ -112,6 +112,7 @@ The two sample apps are listed as two process types, "sample" and "springsample"
     2011-12-01 23:51:07.153 INFO net.spy.memcached.MemcachedConnection:  Connection state changed for sun.nio.ch.SelectionKeyImpl@33bfc93a
     2011-12-01 23:51:07.567 INFO net.spy.memcached.auth.AuthThread:  Authenticated to mc7.ec2.northscale.net/10.82.127.172:11211
     testData
+    2011-12-01 23:51:07.575 INFO net.spy.memcached.MemcachedClient:  Shut down memcached client
 
 and
 
@@ -125,4 +126,6 @@ and
     2011-12-01 23:52:09.499 INFO net.spy.memcached.MemcachedConnection:  Connection state changed for sun.nio.ch.SelectionKeyImpl@2802bd3a
     2011-12-01 23:52:09.638 INFO net.spy.memcached.auth.AuthThread:  Authenticated to mc7.ec2.northscale.net/10.82.127.172:11211
     testDataSpring
+    2011-12-01 23:52:09.646 INFO net.spy.memcached.MemcachedClient:  Shut down memcached client
+
 
